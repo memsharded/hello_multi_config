@@ -14,7 +14,7 @@ class HelloConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         if cmake.is_multi_configuration:
-            cmd = 'cmake "%s" %s' % (self.conanfile_directory, cmake.command_line)
+            cmd = 'cmake "%s/hello" %s' % (self.conanfile_directory, cmake.command_line)
             self.run(cmd)
             self.run("cmake --build . --config Debug")
             self.run("cmake --build . --config Release")
@@ -29,7 +29,7 @@ class HelloConan(ConanFile):
 
     def package(self):
         self.copy("*.h", dst="include", src="hello")
-        self.copy("*hello.lib", dst="lib", keep_path=False)
+        self.copy("*.lib", dst="lib", keep_path=False)
         self.copy("*.dll", dst="bin", keep_path=False)
         self.copy("*.dylib*", dst="lib", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)
