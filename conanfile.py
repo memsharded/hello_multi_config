@@ -17,12 +17,12 @@ class HelloConan(ConanFile):
             del self.settings.compiler.runtime
 
     # Alternative 2: if you want to keep MD-MDd/MT-MTd configuration
-    def package_id(self):
-        if self.settings.compiler == "Visual Studio":
-            if "MD" in self.settings.compiler.runtime:
-                self.info.settings.compiler.runtime = "MD/MDd"
-            else:
-                self.info.settings.compiler.runtime = "MT/MTd"
+    # def package_id(self):
+    #     if self.settings.compiler == "Visual Studio":
+    #         if "MD" in self.settings.compiler.runtime:
+    #             self.info.settings.compiler.runtime = "MD/MDd"
+    #         else:
+    #             self.info.settings.compiler.runtime = "MT/MTd"
 
     def build(self):
         cmake = CMake(self)
